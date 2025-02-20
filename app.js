@@ -1,20 +1,10 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+// app.js
+import express from "express";
+const app = express();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// tus middlewares, rutas, etc.
+app.get("/", (req, res) => {
+  res.send("Hola desde Express + Vercel");
+});
 
-var app = express();
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-module.exports = app;
+export default app;
